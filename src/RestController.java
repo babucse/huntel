@@ -1,5 +1,8 @@
 package com.loiane.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.bnym.gsss.common.annotation.PersistenceConfig;
 import com.bnym.gsss.common.constants.Constants;
@@ -53,4 +60,35 @@ public class RestController extends ControllerTemplateSupport {
 
 		return responseMap;
 	}
+	
+	@PersistenceConfig(enableGenericValidator = false, persistenceHandlerId = "movieImageUploadPersistence", enableEthicalHackValidation = false)
+	@RequestMapping(value="/uploadImg", method=RequestMethod.POST)
+	public View uploadMovieImg(HttpServletRequest request,  @RequestParam("file") MultipartFile file){
+		String contextPath=request.getContextPath();
+		System.out.println(">>>>>>>>>>>>>File Upload>>>>>>");
+		String fileName = file.getOriginalFilename();
+		if (!file.isEmpty()) {
+			try {
+				byte[] bytes = file.getBytes();
+				File dir = new File("C:/tmp" + File.separator);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+				// Create the file on server
+				File localFilePath = new File(dir.getAbsolutePath() + File.separator + fileName );
+				System.out.println("localFilePath :: "+localFilePath);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(localFilePath));
+				stream.write(bytes);
+				stream.close();
+//				return "You successfully uploaded " + fileName + " into " + fileName + "-uploaded !";
+				return new RedirectView("http://localhost:8080/thar/#/about?success");
+
+			} catch (Exception e) {
+				return new RedirectView("http://localhost:8080/thar/#/about?failed");
+			}
+		} else {
+			return new RedirectView("http://localhost:8080/thar/#/about?failed");
+		}
+	}
+	
 }
