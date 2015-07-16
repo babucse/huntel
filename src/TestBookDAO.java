@@ -80,4 +80,21 @@ public class TestBookDAO {
         	e.printStackTrace();
         }
 	}
+	
+	public static void main(String[] args) {
+		File file = new File("C:/Users/XBBLRX7/Downloads/HOM.jpg");
+        byte[] bFile = new byte[(int) file.length()];
+        
+        try {
+	        FileInputStream fileInputStream = new FileInputStream(file);
+	        fileInputStream.read(bFile);
+	        fileInputStream.close();
+	        
+	        String encoded = Base64.encodeBase64String(bFile);
+	        
+	        System.out.println("encoded :: "+encoded);
+        } catch (Exception e) {
+	        e.printStackTrace();
+        }
+	}
 }
