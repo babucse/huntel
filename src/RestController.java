@@ -90,5 +90,21 @@ public class RestController extends ControllerTemplateSupport {
 			return new RedirectView("http://localhost:8080/thar/#/about?failed");
 		}
 	}
+
+	@RequestMapping(value = "/saveLoginUser", method = RequestMethod.POST)
+	@PersistenceConfig(enableGenericValidator=false, persistenceHandlerId="loginUserPersistHndlr", enableEthicalHackValidation = false)
+	public @ResponseBody Object saveLoginUser(HttpServletRequest request,HttpServletResponse response, @RequestBody LoginUserModel model) {
+		
+		Map<String, Object> responseInfo = new HashMap<String, Object>();
+		List<String> errorList = new ArrayList<String>();
+		
+		if (super.persistObject(request, response, model, errorList)) {
+				responseInfo.put(Constants.MAP_SUCCESS_KEY, model.getLoginUsrBean().getlName() + " " +model.getLoginUsrBean().getfName()+" : User has been created successfully");	
+		} else {
+			responseInfo.put(Constants.MAP_ERROR_KEY, errorList);
+		}
+		
+		return responseInfo;
+	}
 	
 }
