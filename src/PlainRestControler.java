@@ -22,7 +22,7 @@ public class PlainRestControler {
 	@Autowired
 	MovieInfoDao infoDao;
 	
-	@RequestMapping(value="/referenceValueOptions/{referenceKey}", method=RequestMethod.GET)
+	@RequestMapping(value="/getLoginUser/{phoneNo}/{email}", method=RequestMethod.GET)
 	public @ResponseBody Object getLoginUser(HttpServletRequest request, @PathVariable String phoneNo, @PathVariable String email) {
 		Map<String, Object> responseInfo = new HashMap<String, Object>();
 		try {
