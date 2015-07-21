@@ -80,4 +80,45 @@ public class MovieInfoDao extends JDBCTemplateSupport{
 		return model;
 	}
 	
+	public LoginUserBean getLoginUser(String phoneNo, String email) throws Exception {
+		String sql =	"SELECT	FIRST_NAME, " +
+								"LAST_NAME, " +
+								"EMAIL, " +
+								"PHONE_NO, " +
+								"RCD_CRD_ID, " +
+								"RCD_CRD_DT, " +
+								"LST_UPDT_ID, " +
+								"LST_UPDT_DT " +
+						"FROM 	LOGIN_USERS" +
+						"WHERE 	PHONE_NO = ? " ;
+		
+		LoginUserBean loginBean =null;
+		try {
+			Object[] qryParams = {phoneNo};
+			int[] argTypes = {Types.NUMERIC};
+			
+			loginBean = getDAOAccessor().queryForObject(sql, qryParams, argTypes, new RowMapper<LoginUserBean>() {
+
+				@Override
+				public LoginUserBean mapRow(ResultSet rs, int inx)
+						throws SQLException {
+					LoginUserBean loginBean = new LoginUserBean();
+					loginBean.setfName(rs.getString("FIRST_NAME"));
+					loginBean.setlName(rs.getString("LIRST_NAME"));
+					loginBean.setEmail(rs.getString("EMAIL"));
+					loginBean.setPhoneNo(rs.getString("PHONE_NO"));
+					loginBean.setRecordCreatedId(rs.getString("RCD_CRD_ID"));
+					loginBean.setRecordCreatedDt(rs.getTimestamp("RCD_CRD_DT"));
+					loginBean.setLastUpdatedId(rs.getString("LST_UPDT_ID"));
+					loginBean.setLastUpdatedDt(rs.getTimestamp("LST_UPDT_DT"));
+					return loginBean;
+					
+				}
+			});
+		} catch (EmptyResultDataAccessException e) {
+			throw new Exception("User not available.");
+		}  
+		
+		return loginBean;
+	}
 }
