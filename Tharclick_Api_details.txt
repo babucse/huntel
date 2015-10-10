@@ -1,0 +1,304 @@
+	
+	This document having rest end point with absolute responce. Using this responce whe have to design UI screen. The responce will be generate dynamic.
+
+HTTP GET 
+---------
+
+1. http://localhost:8080/tharclick/service/RecentBlogInfoList
+
+Responce
+--------
+{
+
+    "data":[
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogId":70008,
+            "blogArticHeading":"Test",
+            "blogArticType":"test",
+            "blogArticDesc":"Test sdescription",
+            "blogLikeCount":14,
+            "blogUnLikeCount":17,
+            "movieInfoId":123,
+            "blogRoleId":0,
+            "blogImgPath":"recentBlog_one.jpg",
+            "recordCreatedId":"system",
+            "recordCreatedDt":1439103600000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1442127600000
+        }
+    ]
+
+}
+
+2. http://localhost:8080/tharclick/service/MovieInfo/20005 
+
+{
+
+    "userId":"test9500",
+    "data":{
+        "userId":"test9500",
+        "formModified":false,
+        "readOnly":false,
+        "movInfoBean":{
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "movieInfoId":20005,
+            "movieName":"Test movie four",
+            "movieReleseDt":"2070-01-01",
+            "movieLanguage":"01",
+            "movieOrgin":"1021",
+            "movieOrginVariant":"Test movie four",
+            "movieGenres":"Test movie four",
+            "movieSynops":"Test movie four",
+            "movieIs3d":false,
+            "movieTeamRolId":45,
+            "movieTrailrLnk":"www.Test movie four",
+            "movieTeaserLnk":"www.Test movie four",
+            "movieRating":4,
+            "movieCertif":"0231",
+            "movieRunTime":"5",
+            "recordCreatedId":"test9500",
+            "recordCreatedDt":1440918000000,
+            "lastUpdatedId":"test9500",
+            "lastUpdatedDt":1440918000000
+        }
+    },
+    "OWASP_CSRFTOKEN":"465a2638-338b-44f8-be45-df357ff2c34b"
+
+}
+
+3. http://localhost:8080/tharclick/service/LoginUser/9500478561/test@gmail
+
+{
+
+    "userId":"test9500",
+    "data":{
+        "userId":"test9500",
+        "formModified":false,
+        "readOnly":false,
+        "loginUsrBean":{
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "phoneNo":"9500478561",
+            "fName":"Test",
+            "lName":"FirstTest",
+            "email":"test@gmail.com",
+            "recordCreatedId":"test9500",
+            "recordCreatedDt":1440918000000,
+            "lastUpdatedId":"test9500",
+            "lastUpdatedDt":1440918000000
+        }
+    },
+    "OWASP_CSRFTOKEN":"1a7f1430-a0a1-47d9-88aa-0f32cac81ccc"
+
+}
+
+
+4. http://localhost:8080/tharclick/service/BlogInfo/70008
+
+
+{
+
+    "userId":"test9500",
+    "data":{
+        "userId":"test9500",
+        "formModified":false,
+        "readOnly":false,
+        "blogInfo":{
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogId":70008,
+            "blogArticHeading":"Test",
+            "blogArticType":"test",
+            "blogArticDesc":"Test sdescription",
+            "blogLikeCount":14,
+            "blogUnLikeCount":17,
+            "movieInfoId":123,
+            "blogRoleId":0,
+            "blogImgPath":"test_blog.jpg",
+            "recordCreatedId":"system",
+            "recordCreatedDt":1439103600000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1442127600000
+        },
+        "recentFlimList":[
+            {
+                "label":"Test movie 1",
+                "value":"20002",
+                "selected":false
+            },
+            {
+                "label":"Test movie Two",
+                "value":"20003",
+                "selected":false
+            },
+            {
+                "label":"Test movie three",
+                "value":"20004",
+                "selected":false
+            },
+            {
+                "label":"Test movie four",
+                "value":"20005",
+                "selected":false
+            },
+            {
+                "label":"Test movie 5",
+                "value":"20006",
+                "selected":false
+            }
+        ]
+    },
+    "OWASP_CSRFTOKEN":"1a7f1430-a0a1-47d9-88aa-0f32cac81ccc"
+
+}
+
+5. http://localhost:8080/tharclick/service/BlogReview/70008
+
+{
+
+    "data":[
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90005,
+            "blogComments":"Test comments wirth info id",
+            "blogCmntLikeCount":7,
+            "blogCmntUnLikeCount":2,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1440140400000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1440226800000
+        },
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90006,
+            "blogComments":"Test comments wirth info id test fdata..",
+            "blogCmntLikeCount":1,
+            "blogCmntUnLikeCount":0,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1440140400000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1440140400000
+        },
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90008,
+            "blogComments":"after given like this tes tcomments..",
+            "blogCmntLikeCount":0,
+            "blogCmntUnLikeCount":6,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1440140400000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1440226800000
+        },
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90009,
+            "blogComments":"ADDING NEW COMMENTS FOR LIKES UPDATEE",
+            "blogCmntLikeCount":2,
+            "blogCmntUnLikeCount":0,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1440140400000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1440140400000
+        },
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90010,
+            "blogComments":"test for coments.. to like",
+            "blogCmntLikeCount":1,
+            "blogCmntUnLikeCount":0,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1440140400000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1442127600000
+        },
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90011,
+            "blogComments":"This is sample test case for blog comments..",
+            "blogCmntLikeCount":0,
+            "blogCmntUnLikeCount":0,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1440140400000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1440140400000
+        },
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90012,
+            "blogComments":"This is sample test case for blog comments.. This is sample test case for blog comments.. This is sample test case for blog comments.. This is sample test case for blog comments.. This is sample test case for blog comments.. This is sample test case for blog comments.. This is sample test case for blog comments.. This is sample test case for blog comments..",
+            "blogCmntLikeCount":1,
+            "blogCmntUnLikeCount":0,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1440140400000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1440226800000
+        },
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90013,
+            "blogComments":"test ample",
+            "blogCmntLikeCount":2,
+            "blogCmntUnLikeCount":3,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1440226800000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1440918000000
+        },
+        {
+            "rowStatus":"",
+            "rowId":0,
+            "selected":false,
+            "blogReviewId":90014,
+            "blogComments":"Test comments for long back testing",
+            "blogCmntLikeCount":1,
+            "blogCmntUnLikeCount":1,
+            "blogIsReportAbuse":false,
+            "blogInfoId":70008,
+            "recordCreatedId":"system",
+            "recordCreatedDt":1442127600000,
+            "lastUpdatedId":"system",
+            "lastUpdatedDt":1442127600000
+        }
+    ]
+
+}
